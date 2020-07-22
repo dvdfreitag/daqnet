@@ -67,13 +67,13 @@ class MAC(Elaboratable):
         # TX port
         self.tx_start = Signal()
         self.tx_len = Signal(11)
-        self.tx_offset = Signal(tx_buf_size-1)
+        self.tx_offset = Signal(range(tx_buf_size-1))
 
         # RX port
         self.rx_ack = Signal()
         self.rx_valid = Signal()
         self.rx_len = Signal(11)
-        self.rx_offset = Signal(rx_buf_size-1)
+        self.rx_offset = Signal(range(rx_buf_size-1))
 
         # Inputs
         self.phy_reset = Signal()
@@ -227,7 +227,7 @@ class PHYManager(Elaboratable):
 
         # Controller FSM
         one_ms = int(self.clk_freq//1000)
-        counter = Signal(one_ms)
+        counter = Signal(range(one_ms))
         with m.FSM():
 
             # Assert PHY_RST and begin 1ms counter

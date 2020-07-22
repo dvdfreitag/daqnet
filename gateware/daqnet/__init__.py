@@ -20,7 +20,7 @@ def main():
         plat = SensorPlatform()
         top = SensorTop(plat, args)
     plat.build(top, args.device, "build/", synth_opts=["-relut"],
-               nextpnr_opts=["--seed", str(args.seed), "--freq", "100",
+               nextpnr_opts=["--seed", str(args.seed), "--freq", "90",
                              "--placer", "heap"])
     if args.program:
         subprocess.run(
