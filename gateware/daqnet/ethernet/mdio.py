@@ -59,7 +59,7 @@ class MDIO(Elaboratable):
         mdc_int = Signal()
         mdc_rise = Signal()
         mdc_fall = Signal()
-        mdc_divider = Signal(max=self.clk_div)
+        mdc_divider = Signal(self.clk_div)
         with m.If(mdc_divider == 0):
             m.d.sync += [
                 mdc_divider.eq(self.clk_div - 1),

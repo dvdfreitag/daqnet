@@ -42,7 +42,7 @@ class CRC32(Elaboratable):
         m = Module()
         crc = Signal(32)
 
-        self.crctable = Memory(32, 256, make_crc32_table())
+        self.crctable = Memory(width=32, depth=256, init=make_crc32_table())
         table_port = self.crctable.read_port()
         m.submodules += table_port
 

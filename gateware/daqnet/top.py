@@ -12,13 +12,13 @@ from .user import User
 
 
 class LEDBlinker(Elaboratable):
-    def __init__(self, nbits):
+    def __init__(self, width):
         self.led = Signal()
-        self.nbits = nbits
+        self.width = width
 
     def elaborate(self, platform):
         m = Module()
-        divider = Signal(self.nbits)
+        divider = Signal(self.width)
         m.d.sync += divider.eq(divider + 1)
         m.d.comb += self.led.eq(divider[-1])
         return m

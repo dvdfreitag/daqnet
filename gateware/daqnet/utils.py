@@ -46,7 +46,7 @@ class PulseStretch(Elaboratable):
     def elaborate(self, platform):
         m = Module()
 
-        counter = Signal(max=self.nclks)
+        counter = Signal(self.nclks)
 
         with m.FSM() as fsm:
             m.d.comb += self.pulse.eq(fsm.ongoing("STRETCH"))
